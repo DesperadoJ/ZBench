@@ -1,10 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-import urllib
-import urllib2
-
-
 def change_to_list(filename):
     content = open(filename,"r").read().strip()
     return list(content.split("\n"))
@@ -21,27 +17,16 @@ def traceroute_to_dict(filename):
         line = content[i]
         if line[1].isdigit():
             if line[4] != "*" :
-                ip = line.strip().split("  ")[1]
-                asn = line.strip().split("  ")[3]
-                iptest = ip.strip().split(" ")[0]
-                url = "http://ip-api.com/csv/" + iptest
-                req = urllib2.Request(url)
-                res_data = urllib2.urlopen(req)
-                res = res_data.read()
-                if res.strip().split(",")[0] == "success" :
-					isp=res.strip().split(",")[11]
-					asn=res.strip().split(",")[12]
-                else:
-					isp= "*"
                 latency=line.strip().split("  ")[2]
+                asn = line.strip().split("  ")[3]
                 route = line.strip().split("  ")[4]
+                ip = line.strip().split("  ")[1]
                 step = line[0:2]
             else:
                 latency="*"
                 asn = "*"
                 route = "*"
                 ip = "*"
-                isp= "*"
                 step = line[0:2]
 
             d[int(step)]=dict()
@@ -51,26 +36,26 @@ def traceroute_to_dict(filename):
             d[int(step)]["latency"]=latency
             d[int(step)]["asn"]=asn
             d[int(step)]["route"]=route
-            d[int(step)]["isp"]=isp
+
 
     return dict(d)
 
+
 def traceroute_to_table(filename):
-  d = traceroute_to_dict(filename)
-  string = ""
-  for i in sorted(d.keys()):
-    x = d[i]
-    template = """
-  <tr>
-  <td>{}</td>
-  <td>{}</td>
-  <td>{}</td>
-  <td>{}</td>
-  <td>{}</td>
-  <td>{}</td>
-  </tr>
-  """
-    string = string + template.format(i,x["ip"],x["route"],x["isp"],x["asn"],x["latency"]) + "\n"
+    d = traceroute_to_dict(filename)
+    string = ""
+    for i in sorted(d.keys()):
+        x = d[i]
+        template = """
+    <tr>
+      <td>{}</td>
+      <td>{}</td>
+      <td>{}</td>
+      <td>{}</td>
+      <td>{}</td>
+    </tr>
+    """
+    string = string + template.format(i,x["ip"],x["route"],x["asn"],x["latency"]) + "\n"
     
     writefile = open(filename + "_table","w")
     writefile.write(string)
@@ -85,13 +70,12 @@ def dict_to_table(d,tab):
     
     table_html = """
     
-    <div class="{0}" data-tab="{1}">
+<div class="{0}" data-tab="{1}">
 <table class="ui very compact striped table">
   <thead>
     <tr><th>跳数</th>
     <th>IP</th>
     <th>路由</th>
-	<th>ISP</th>
     <th>AS Number</th>
     <th>延迟</th>
   </tr></thead>
@@ -100,37 +84,33 @@ def dict_to_table(d,tab):
 
     for step in sorted(d.keys()):
         table_html = table_html + """
-        
         <tr>
-      <td>{0}</td>
-      <td>{1}</td>
-      <td>{2}</td>
-      <td>{3}</td>
-      <td>{4}</td>
-	  <td>{5}</td>
-    </tr>
-        
-        """.format(step,d[step]["ip"],d[step]["route"],d[step]["isp"],d[step]["asn"],d[step]["latency"])
+          <td>{0}</td>
+          <td>{1}</td>
+          <td>{2}</td>
+          <td>{3}</td>
+          <td>{4}</td>
+        </tr>
+        """.format(step,d[step]["ip"],d[step]["route"],d[step]["asn"],d[step]["latency"])
+
     table_html = table_html + """
-      </tbody>
+  </tbody>
 </table>
 </div>
     """
     return table_html
 
 html = """
-
 <html>
 <head>
     <meta charset="UTF-8" id="home">
-    <meta name="keywords" content="Zbench,Function Club,Bench Mark,VPS,主机博客,测评,测试脚本">
+    <meta name="keywords" content="Zbench,DesperadoJ,Bench Mark,VPS,测评,测试脚本">
     <title>Zbench v1.0 HTML Output</title>
 <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.css">
 <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.js"></script>
 </head>
 <body>
-
 <div class="ui attached stackable menu">
   <div class="ui container">
     <a class="item" onclick="javascript:scroller('home', 100);">
@@ -152,28 +132,18 @@ html = """
       更多
       <i class="dropdown icon"></i>
       <div class="menu">
-        <a class="item" href="https://www.github.com/FunctionClub"><i class="edit icon"></i> 关于我们</a>
-        <a class="item" href="https://github.com/FunctionClub/ZBench/"><i class="github icon"></i>Github </a>
+        <a class="item" href="https://www.github.com/DesperadoJ"><i class="edit icon"></i> 关于我们</a>
+        <a class="item" href="https://github.com/DesperadoJ/ZBench/"><i class="github icon"></i>Github </a>
       </div>
     </div>
     <div class="right item">
       <div class="ui">    
-            <a href="https://github.com/FunctionClub/ZBench/">ZBench v1.0-Beta</a>
+            <a href="https://github.com/DesperadoJ/ZBench/">ZBench v1.0</a>
       </div>
     </div>
   </div>
 </div>
-
 <div class="ui hidden divider"></div>
-<div class="ui container">
-<div class="ui message red">
-<i class="close icon"></i>
-  <div class="header">
-    您正在使用的是开发中的项目。
-  </div>
-  <p>此程序正处于开发版, 我们无法保证在运行过程中不会出错. 我们将在近期测试后放出正式版，敬请期待.</p>
-</div>
-</div>
 <div class="ui hidden divider"></div>
 <div class="ui container">
 <div class="ui message">
@@ -181,11 +151,9 @@ html = """
     测试数据准确性说明
   </div>
   <p>请注意，所有的测试数据为测试时的实时数据. 我们不保证您的服务商会在日后一直使用保持完全相同的服务。数据仅供参考.</p>
-</p>
 </div>
 </div>
 <div class="ui hidden divider" id="system"></div>
-
 <h2 class="ui center aligned icon header">
   <i class="circular Laptop icon"></i>
   系统信息
@@ -210,86 +178,71 @@ html = """
         <i class="Microchip icon"></i> CPU 核心数
       </td>
       <td>{1}</td>
-      
     </tr>
     <tr>
       <td>
         <i class="Microchip icon"></i> CPU 主频
       </td>
       <td>{2}</td>
-      
     </tr>
     <tr>
       <td>
         <i class="Archive icon"></i> 硬盘大小
       </td>
       <td>{3}</td>
-      
     </tr>
     <tr>
       <td>
         <i class="Lightning icon"></i> 内存大小
       </td>
       <td>{4}</td>
-      
     </tr>
     <tr>
       <td>
         <i class="Database icon"></i> SWAP 交换空间大小
       </td>
       <td>{5}</td>
-      
     </tr>
     <tr>
       <td>
         <i class="Bar Chart icon"></i> 在线时长
       </td>
       <td>{6}</td>
-      
     </tr>
     <tr>
       <td>
         <i class="Pie Chart icon"></i> 系统负载
       </td>
       <td>{7}</td>
-      
     </tr>
     <tr>
       <td>
         <i class="Windows icon"></i> 系统
       </td>
       <td>{8}</td>
-      
     </tr>
     <tr>
       <td>
         <i class="Columns icon"></i> 架构
       </td>
       <td>{9}</td>
-      
     </tr>
     <tr>
       <td>
         <i class="File Code Outline icon"></i> 核心
       </td>
       <td>{10}</td>
-      
     </tr>
     <tr>
       <td>
         <i class="Group Object icon"></i> 虚拟化技术
       </td>
       <td>{11}</td>
-      
     </tr>
   </tbody>
 </table>
 </div>
-
-
-
 <div class="ui hidden divider" id="hdd"></div>
-
 <h2 class="ui center aligned icon header">
   <i class="circular Clone icon"></i>
   硬盘 I/O
@@ -299,9 +252,10 @@ html = """
 <table class="ui celled striped table">
   <thead>
     <tr>
-    <th>次数</th>
+      <th>次数</th>
       <th>速度</th>
-  </tr></thead>
+    </tr>
+  </thead>
   <tbody>
     <tr>
       <td class="collapsing">
@@ -321,16 +275,9 @@ html = """
       </td>
       <td>{14}</td>
     </tr>
-
   </tbody>
 </table>
 </div>
-
-
-
-
-
-
 <div class="ui hidden divider" id="net"></div>
 <h2 class="ui center aligned icon header">
   <i class="circular Internet Explorer icon"></i>
@@ -355,7 +302,7 @@ html = """
       <td>{17}</td>
     </tr>
     <tr>
-      <td>Linode 日本</td>
+      <td>Linode 日本 东京</td>
       <td>{18}</td>
       <td>{19}</td>
       <td>{20}</td>
@@ -367,48 +314,49 @@ html = """
       <td>{23}</td>
     </tr>
     <tr>
-      <td>Linode 英国</td>
+      <td>Linode 美国 费利蒙</td>
       <td>{24}</td>
       <td>{25}</td>
       <td>{26}</td>
     </tr>
     <tr>
-      <td>Linode 法兰克福</td>
+      <td>Linode 英国 伦敦</td>
       <td>{27}</td>
       <td>{28}</td>
       <td>{29}</td>
     </tr>
     <tr>
-      <td>Linode 加拿大</td>
+      <td>Linode 德国 法兰克福</td>
       <td>{30}</td>
       <td>{31}</td>
       <td>{32}</td>
     </tr>
     <tr>
-      <td>Softlayer 达拉斯</td>
+      <td>Softlayer 中国 香港</td>
       <td>{33}</td>
       <td>{34}</td>
       <td>{35}</td>
     </tr>
     <tr>
-      <td>Softlayer 西雅图</td>
+      <td>Softlayer 新加坡</td>
       <td>{36}</td>
       <td>{37}</td>
       <td>{38}</td>
     </tr>
     <tr>
-      <td>Softlayer 法兰克福</td>
+      <td>Softlayer 美国 达拉斯</td>
       <td>{39}</td>
       <td>{40}</td>
       <td>{41}</td>
     </tr>
     <tr>
-      <td>Softlayer 新加坡</td>
+      <td>Softlayer 美国 西雅图</td>
       <td>{42}</td>
-      <td>{43}</td><td>{44}</td>
+      <td>{43}</td>
+      <td>{44}</td>
     </tr>
     <tr>
-      <td>Softlayer 香港</td>
+      <td>Softlayer 德国 法兰克福</td>
       <td>{45}</td>
       <td>{46}</td>
       <td>{47}</td>
@@ -416,7 +364,6 @@ html = """
   </tbody>
 </table>
 </dev>
-
 <div class="ui hidden divider"></div>
 <div class="ui container">
 <table class="ui compact striped table">
@@ -430,75 +377,96 @@ html = """
   </thead>
   <tbody>
     <tr>
-      <td>上海电信</td>
+      <td>南京电信</td>
       <td>{48}</td>
       <td>{49}</td>
       <td>{50}</td>
     </tr>
     <tr>
-      <td>成都电信</td>
+      <td>广州电信</td>
       <td>{51}</td>
       <td>{52}</td>
       <td>{53}</td>
     </tr>
     <tr>
-      <td>西安电信</td>
+      <td>襄阳电信</td>
       <td>{54}</td>
       <td>{55}</td>
       <td>{56}</td>
     </tr>
     <tr>
-      <td>上海联通</td>
+      <td>重庆电信</td>
       <td>{57}</td>
       <td>{58}</td>
       <td>{59}</td>
     </tr>
     <tr>
-      <td>重庆联通</td>
+      <td>北京联通</td>
       <td>{60}</td>
       <td>{61}</td>
       <td>{62}</td>
     </tr>
     <tr>
-      <td>北京电信</td>
+      <td>上海联通</td>
       <td>{63}</td>
       <td>{64}</td>
       <td>{65}</td>
     </tr>
     <tr>
-      <td>北京联通</td>
+      <td>福州联通</td>
       <td>{66}</td>
       <td>{67}</td>
       <td>{68}</td>
     </tr>
     <tr>
-      <td>湖南电信</td>
+      <td>长沙联通</td>
       <td>{69}</td>
       <td>{70}</td>
       <td>{71}</td>
     </tr>
+    <tr>
+      <td>北京移动</td>
+      <td>{72}</td>
+      <td>{73}</td>
+      <td>{74}</td>
+    </tr>
+    <tr>
+      <td>上海移动</td>
+      <td>{75}</td>
+      <td>{76}</td>
+      <td>{77}</td>
+    </tr>
+    <tr>
+      <td>深圳移动</td>
+      <td>{78}</td>
+      <td>{79}</td>
+      <td>{80}</td>
+    </tr>
+    <tr>
+      <td>昆明移动</td>
+      <td>{81}</td>
+      <td>{82}</td>
+      <td>{83}</td>
+    </tr>
   </tbody>
 </table>
 </div>
-
 <div class="ui hidden divider" id="route"></div>
 <h2 class="ui center aligned icon header">
   <i class="circular Blind icon"></i>
   路由追踪
 </h2>
-
 <div class="ui hidden divider"></div>
 <div class="ui container">
 <div class="ui top attached tabular menu">
-  <a class="item active" data-tab="first">上海移动</a>
-  <a class="item" data-tab="second">上海电信</a>
-  <a class="item" data-tab="third">上海联通</a>
-  <a class="item" data-tab="fourth">广东移动</a>
-  <a class="item" data-tab="fifth">广东电信</a>
-  <a class="item" data-tab="sixth">广东联通</a>
+  <a class="item active" data-tab="first">上海电信</a>
+  <a class="item" data-tab="second">上海联通</a>
+  <a class="item" data-tab="third">上海移动</a>
+  <a class="item" data-tab="fourth">广东电信</a>
+  <a class="item" data-tab="fifth">广东联通</a>
+  <a class="item" data-tab="sixth">广东移动</a>
   <a class="item" data-tab="seventh">所在地IP</a>
 </div>
-
 """
 
 
@@ -507,13 +475,12 @@ footer = """
 </div>
 <div class="ui hidden divider"></div>
 <div class="ui visible message">
-  <p>CopyRight 2016-2018 <a href="https://www.github.com/FunctionClub">Function Club</a>. All Right Reserved.   Published By <a href="https://www.zhujiboke.com">主机博客</a></p>
+  <p>CopyRight 2016-2018 <a href="https://www.github.com/DesperadoJ">DesperadoJ</a>. All Right Reserved.   Published By <a href="https://www.desperadoj.com">如风</a></p>
 </div>
-
 </body>
 <footer>
 <script type="text/javascript"> 
-//平滑滚动支持
+// 平滑滚动支持
 // 转换为数字
 function intval(v)
 {
@@ -611,57 +578,49 @@ $('.ui.basic.modal')
 </script>
 </footer>
 </html>
-
-
 """
 
-info = change_to_list("/tmp/info.txt")
+info = change_to_list("/tmp/zbench/info.txt")
 
-speed = change_to_list("/tmp/speed.txt")
+speed = change_to_list("/tmp/zbench/speed.txt")
 
-speed_cn = change_to_list("/tmp/speed_cn.txt")
+speed_cn = change_to_list("/tmp/zbench/speed_cn.txt")
 
-shm = traceroute_to_dict("/tmp/shm.txt")
-traceroute_to_table("/tmp/shm.txt")
-shm_html = dict_to_table(shm,"first")
+sht = traceroute_to_dict("/tmp/zbench/sht.txt")
+traceroute_to_table("/tmp/zbench/sht.txt")
+sht_html = dict_to_table(sht,"first")
 
-sht = traceroute_to_dict("/tmp/sht.txt")
-traceroute_to_table("/tmp/sht.txt")
-sht_html = dict_to_table(sht,"second")
+shu = traceroute_to_dict("/tmp/zbench/shu.txt")
+traceroute_to_table("/tmp/zbench/shu.txt")
+shu_html = dict_to_table(shu,"second")
 
-shu = traceroute_to_dict("/tmp/shu.txt")
-traceroute_to_table("/tmp/shu.txt")
-shu_html = dict_to_table(shu,"third")
+shm = traceroute_to_dict("/tmp/zbench/shm.txt")
+traceroute_to_table("/tmp/zbench/shm.txt")
+shm_html = dict_to_table(shm,"third")
 
-gdm = traceroute_to_dict("/tmp/gdm.txt")
-traceroute_to_table("/tmp/gdm.txt")
-gdm_html = dict_to_table(gdm,"fourth")
+gdt = traceroute_to_dict("/tmp/zbench/gdt.txt")
+traceroute_to_table("/tmp/zbench/gdt.txt")
+gdt_html = dict_to_table(gdt,"fourth")
 
-gdt = traceroute_to_dict("/tmp/gdt.txt")
-traceroute_to_table("/tmp/gdt.txt")
-gdt_html = dict_to_table(gdt,"fifth")
+gdu = traceroute_to_dict("/tmp/zbench/gdu.txt")
+traceroute_to_table("/tmp/zbench/gdu.txt")
+gdu_html = dict_to_table(gdu,"fifth")
 
-gdu = traceroute_to_dict("/tmp/gdu.txt")
-traceroute_to_table("/tmp/gdu.txt")
-gdu_html = dict_to_table(gdu,"sixth")
+gdm = traceroute_to_dict("/tmp/zbench/gdm.txt")
+traceroute_to_table("/tmp/zbench/gdm.txt")
+gdm_html = dict_to_table(gdm,"sixth")
 
-own = traceroute_to_dict("/tmp/own.txt")
-traceroute_to_table("/tmp/own.txt")
+own = traceroute_to_dict("/tmp/zbench/own.txt")
+traceroute_to_table("/tmp/zbench/own.txt")
 own_html = dict_to_table(own,"seventh")
 
 html = html.format(info[0],info[1],info[2],info[3],info[4],info[5],info[6],info[7],info[8],info[9],info[10],info[11],info[12],info[13],info[14], \
 
-speed[0],speed[1],speed[2],speed[3],speed[4],speed[5],speed[6],speed[7],speed[8],speed[9],speed[10],speed[11],speed[12],speed[13],speed[14],speed[15],\
+speed[0],speed[1],speed[2],speed[3],speed[4],speed[5],speed[6],speed[7],speed[8],speed[9],speed[10],speed[11],speed[12],speed[13],speed[14],speed[15],speed[16],speed[17],speed[18],speed[19],speed[20],speed[21],speed[22],speed[23],speed[24],speed[25],speed[26],speed[27],speed[28],speed[29],speed[30],speed[31],speed[32],\
 
-speed[16],speed[17],speed[18],speed[19],speed[20],speed[21],speed[22],speed[23],speed[24],speed[25],speed[26],speed[27],speed[28],speed[29],speed[30],speed[31],speed[32],\
+speed_cn[0],speed_cn[1],speed_cn[2],speed_cn[3],speed_cn[4],speed_cn[5],speed_cn[6],speed_cn[7],speed_cn[8],speed_cn[9],speed_cn[10],speed_cn[11],speed_cn[12],speed_cn[13],speed_cn[14],speed_cn[15],speed_cn[16],speed_cn[17],speed_cn[18],speed_cn[19],speed_cn[20],speed_cn[21],speed_cn[22],speed_cn[23],speed_cn[24],speed_cn[25],speed_cn[26],speed_cn[27],speed_cn[28],speed_cn[29],speed_cn[30],speed_cn[31],speed_cn[32],speed_cn[33],speed_cn[34],speed_cn[35])
 
-speed_cn[0],speed_cn[1],speed_cn[2],speed_cn[3],speed_cn[4],speed_cn[5],speed_cn[6],speed_cn[7],speed_cn[8],speed_cn[9],speed_cn[10],speed_cn[11],speed_cn[12],\
-
-speed_cn[13],speed_cn[14],speed_cn[15],speed_cn[16],speed_cn[17],\
-
-speed_cn[18],speed_cn[19],speed_cn[20],speed_cn[21],speed_cn[22],speed_cn[23])
-
-html = html + shm_html + sht_html + shu_html + gdm_html + gdt_html + gdu_html + own_html + footer
+html = html + sht_html + shu_html + shm_html + gdt_html + gdu_html + gdm_html + own_html + footer
 
 web = open("/root/report.html","w")
 
