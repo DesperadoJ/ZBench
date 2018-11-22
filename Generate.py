@@ -48,11 +48,11 @@ def traceroute_to_table(filename):
         x = d[i]
         template = """
     <tr>
-      <td>{}</td>
-      <td>{}</td>
-      <td>{}</td>
-      <td>{}</td>
-      <td>{}</td>
+      <td>{0}</td>
+      <td>{1}</td>
+      <td>{2}</td>
+      <td>{3}</td>
+      <td>{4}</td>
     </tr>
     """
     string = string + template.format(i,x["ip"],x["route"],x["asn"],x["latency"]) + "\n"
