@@ -35,7 +35,6 @@ STYLE = {
     }
 }
 
-
 def use_style(string, mode='', fore='', back=''):
     mode = '%s' % STYLE['mode'][mode] if STYLE['mode'].has_key(mode) else ''
     fore = '%s' % STYLE['fore'][fore] if STYLE['fore'].has_key(fore) else ''
@@ -46,36 +45,36 @@ def use_style(string, mode='', fore='', back=''):
     return '%s%s%s' % (style, string, end)
 
 D = {
-    'Zhengzhou': '61.168.23.74', 
-    'Jinan': '202.102.152.3',
-    'Tianjin': '219.150.32.132', 
-    'Changji': '61.128.107.242',
-    'Lhasa': '221.13.70.244', 
-    'Changchun': '202.98.0.68',
-    'Shenzhen': '119.147.52.35', 
-    'Lanzhou': 'www.lanzhouunicom.com', 
-    'Xining': '221.207.32.94', 
-    'Hefei': '112.122.10.26',
-    'Wuhan': '113.57.249.2', 
-    'Xiangyang': '202.103.44.150', 
-    'Nanchang': 'speedtest2.wy.jxunicom.com', 
-    'Chongqing': 'speedtest1.cqccn.com', 
-    'Shanghai': 'speedtest2.sh.chinamobile.com',
-    'Huhehaote': '222.74.1.200',
-    'Urumqi': '61.128.114.133',
-    'Hangzhou': '122.229.136.10',
-    'Xi an': 'xatest.wo-xa.com', 
-    'Ningbo': '202.96.104.1',
-    'Taiyuan': 'speedtest.sxunicomjzjk.cn', 
-    'Suzhou': '218.94.214.42', 
-    'Changsha': '61.234.254.5',
     'Harbin': '202.97.224.1',
-    'Beijing': 'st1.bjtelecom.net',
-    'Chengdu': 'speed.westidc.com.cn', 
+    'Changchun': '202.98.0.68',
     'Shenyang': 'speedtest1.online.ln.cn',
-    'Nanjing': '4gnanjing1.speedtest.jsinfo.net', 
+    'Dalian': '219.149.9.153',
+    'Beijing': 'st1.bjtelecom.net',
+    'Tianjin': '219.150.32.132',
+    'Taiyuan': '221.204.253.1',
+    'Huhehaote': '222.74.1.200',
+    'Shanghai': 'speedtest2.sh.chinamobile.com',
+    'Nanjing': '4gnanjing1.speedtest.jsinfo.net',
+    'Hangzhou': '122.229.136.10',
+    'Suzhou': '218.94.214.42',
+    'Ningbo': '202.96.104.1',
+    'Hefei': '112.122.10.26',
+    'Fuzhou': 'upload1.testspeed.kaopuyun.com',
+    'Nanchang': '111.74.239.65',
+    'Jinan': '202.102.152.3',
+    'Zhengzhou': '61.168.23.74',
+    'Wuhan': '113.57.249.2',
+    'Xiangyang': '221.233.60.1',
+    'Changsha': '61.234.254.5',
+    'Shenzhen': '58.60.3.102',
+    "Xi'an": 'xatest.wo-xa.com',
+    'Lanzhou': 'www.lanzhouunicom.com',
+    'Xining': '221.207.32.94',    
     'Ningxia': '221.199.9.35',
-    'Fuzhou': 'upload1.testspeed.kaopuyun.com'
+    'Urumqi': '61.128.114.133',
+    'Chengdu': 'speed.westidc.com.cn',
+    'Chongqing': 'speedtest1.cqccn.com',
+    'Lhasa': '221.13.70.244'
     }
 
 
