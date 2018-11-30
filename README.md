@@ -1,4 +1,4 @@
-# Zench
+# ZBench
 
 又一个Linux VPS测评脚本
 
