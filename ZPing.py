@@ -47,7 +47,7 @@ def use_style(string, mode='', fore='', back=''):
 D = {
     'Harbin': '202.97.224.1',
     'Changchun': '202.98.0.68',
-    'Shenyang': 'speedtest1.online.ln.cn',
+    'Shenyang': '175.167.135.1',
     'Dalian': '219.149.9.153',
     'Beijing': 'st1.bjtelecom.net',
     'Tianjin': '219.150.32.132',
