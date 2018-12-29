@@ -336,6 +336,6 @@ if [[ $ifreport == 'y' ]];then
     myip=`curl -m 10 -s http://members.3322.org/dyndns/getip`
     echo "Visit http://${myip}:8001/index.html to see your report，Press Ctrl + C to exit."
     cd /tmp/report
+    iptables -I INPUT -p tcp -m state --state NEW -m tcp --dport 8001 -j ACCEPT
     python -m SimpleHTTPServer 8001
-    iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8001 -j ACCEPT
 fi
