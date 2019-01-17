@@ -118,19 +118,19 @@ fi
 chmod a+rx /tmp/zbench/ZPing-CN.py
 
 #"TraceRoute to Shanghai Telecom"
-/tmp/zbench/besttrace -q 1 61.129.42.6 > /tmp/zbench/sht.txt 2>&1 &
+/tmp/zbench/besttrace -q 1 -g cn 61.129.42.6 > /tmp/zbench/sht.txt 2>&1 &
 #"TraceRoute to Shanghai Unicom"
-/tmp/zbench/besttrace -q 1 210.22.80.1 > /tmp/zbench/shu.txt 2>&1 &
+/tmp/zbench/besttrace -q 1 -g cn 210.22.80.1 > /tmp/zbench/shu.txt 2>&1 &
 #"TraceRoute to Shanghai Mobile"
-/tmp/zbench/besttrace -q 1 speedtest2.sh.chinamobile.com > /tmp/zbench/shm.txt 2>&1 &
+/tmp/zbench/besttrace -q 1 -g cn speedtest2.sh.chinamobile.com > /tmp/zbench/shm.txt 2>&1 &
 #"TraceRoute to Guangdong Telecom"
-/tmp/zbench/besttrace -q 1 gd.189.cn > /tmp/zbench/gdt.txt 2>&1 &
+/tmp/zbench/besttrace -q 1 -g cn gd.189.cn > /tmp/zbench/gdt.txt 2>&1 &
 #"TraceRoute to Guangdong Unicom"
-/tmp/zbench/besttrace -q 1 221.5.88.88 > /tmp/zbench/gdu.txt 2>&1 &
+/tmp/zbench/besttrace -q 1 -g cn 221.5.88.88 > /tmp/zbench/gdu.txt 2>&1 &
 #"TraceRoute to Guangdong Mobile"
-/tmp/zbench/besttrace -q 1 211.136.192.6 > /tmp/zbench/gdm.txt 2>&1 &
+/tmp/zbench/besttrace -q 1 -g cn 211.136.192.6 > /tmp/zbench/gdm.txt 2>&1 &
 #"TraceRoute to Owner's Network"
-/tmp/zbench/besttrace -q 1 ${OwnerIP} > /tmp/zbench/own.txt 2>&1 &
+/tmp/zbench/besttrace -q 1 -g cn ${OwnerIP} > /tmp/zbench/own.txt 2>&1 &
 
 get_opsy() {
     [ -f /etc/redhat-release ] && awk '{print ($1,$3~/^[0-9]/?$3:$4)}' /etc/redhat-release && return
