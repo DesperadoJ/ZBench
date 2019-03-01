@@ -216,11 +216,11 @@ speed_cn() {
     speed_test_cn '5145' '北京联通'
     speed_test_cn '5083' '上海联通'
     speed_test_cn '4884' '福州联通'
-    speed_test_cn '4870' '长沙联通'
+    speed_test_cn '5485' '武汉联通'
     speed_test_cn '4713' '北京移动'
     speed_test_cn '16803' '上海移动'
     speed_test_cn '4515' '深圳移动'
-    speed_test_cn '6168' '昆明移动'
+    speed_test_cn '16395' '武汉移动'
 }
 
 io_test() {

@@ -216,11 +216,11 @@ speed_cn() {
     speed_test_cn '5145' 'Beijing   CU'
     speed_test_cn '5083' 'Shanghai  CU'
     speed_test_cn '4884' 'Fuzhou    CU'
-    speed_test_cn '4870' 'Changsha  CU'
+    speed_test_cn '5485' 'Wuhan     CU'
     speed_test_cn '4713' 'Beijing   CM'
     speed_test_cn '16803' 'Shanghai  CM'
     speed_test_cn '4515' 'Shenzhen  CM'
-    speed_test_cn '6168' 'Kunming   CM'
+    speed_test_cn '16395' 'Wuhan     CM'
 }
 
 io_test() {
