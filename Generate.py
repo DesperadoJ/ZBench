@@ -56,7 +56,7 @@ def traceroute_to_table(filename):
     </tr>
     """
     string = string + template.format(i,x["ip"],x["route"],x["asn"],x["latency"]) + "\n"
-    
+
     writefile = open(filename + "_table","w")
     writefile.write(string)
     writefile.close()
@@ -67,16 +67,16 @@ def dict_to_table(d,tab):
     table_class = "ui bottom attached tab segment"
     if tab == "first":
         table_class = table_class + " active"
-    
+
     table_html = """
-    
+
 <div class="{0}" data-tab="{1}">
 <table class="ui very compact striped table">
   <thead>
     <tr><th>跳数</th>
     <th>IP</th>
     <th>路由</th>
-    <th>AS Number</th>
+    <th>ASN</th>
     <th>延迟</th>
   </tr></thead>
   <tbody>
@@ -137,7 +137,7 @@ html = """
       </div>
     </div>
     <div class="right item">
-      <div class="ui">    
+      <div class="ui">
             <a href="https://github.com/DesperadoJ/ZBench/">ZBench v1.0</a>
       </div>
     </div>
@@ -162,7 +162,7 @@ html = """
 <div class="ui container">
 <table class="ui celled striped table">
   <thead>
-    <tr> 
+    <tr>
       <th>项目</th>
       <th>数据</th>
   </tr></thead>
@@ -229,7 +229,7 @@ html = """
     </tr>
     <tr>
       <td>
-        <i class="File Code Outline icon"></i> 核心
+        <i class="File Code Outline icon"></i> 内核
       </td>
       <td>{10}</td>
     </tr>
@@ -419,7 +419,7 @@ html = """
       <td>{68}</td>
     </tr>
     <tr>
-      <td>长沙联通</td>
+      <td>武汉联通</td>
       <td>{69}</td>
       <td>{70}</td>
       <td>{71}</td>
@@ -443,7 +443,7 @@ html = """
       <td>{80}</td>
     </tr>
     <tr>
-      <td>昆明移动</td>
+      <td>武汉移动</td>
       <td>{81}</td>
       <td>{82}</td>
       <td>{83}</td>
@@ -479,7 +479,7 @@ footer = """
 </div>
 </body>
 <footer>
-<script type="text/javascript"> 
+<script type="text/javascript">
 // 平滑滚动支持
 // 转换为数字
 function intval(v)
@@ -487,7 +487,7 @@ function intval(v)
     v = parseInt(v);
     return isNaN(v) ? 0 : v;
 }
- 
+
 // 获取元素信息
 function getPos(e)
 {
@@ -506,12 +506,12 @@ function getPos(e)
     t  += e.offsetTop  + (e.currentStyle?intval(e.currentStyle.borderTopWidth):0);
     return {x:l, y:t, w:w, h:h, wb:wb, hb:hb};
 }
- 
+
 // 获取滚动条信息
-function getScroll() 
+function getScroll()
 {
     var t, l, w, h;
-    
+
     if (document.documentElement && document.documentElement.scrollTop) {
         t = document.documentElement.scrollTop;
         l = document.documentElement.scrollLeft;
@@ -525,21 +525,21 @@ function getScroll()
     }
     return { t: t, l: l, w: w, h: h };
 }
- 
+
 // 锚点(Anchor)间平滑跳转
 function scroller(el, duration)
 {
     if(typeof el != 'object') { el = document.getElementById(el); }
- 
+
     if(!el) return;
- 
+
     var z = this;
     z.el = el;
     z.p = getPos(el);
     z.s = getScroll();
     z.clear = function(){window.clearInterval(z.timer);z.timer=null};
     z.t=(new Date).getTime();
- 
+
     z.step = function(){
         var t = (new Date).getTime();
         var p = (t - z.t) / duration;
