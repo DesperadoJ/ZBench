@@ -220,7 +220,7 @@ speed_cn() {
     speed_test_cn '4713' '北京移动'
     speed_test_cn '16803' '上海移动'
     speed_test_cn '4515' '深圳移动'
-    speed_test_cn '16395' '武汉移动'
+    speed_test_cn '5292' '西安移动'
 }
 
 io_test() {

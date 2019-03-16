@@ -220,7 +220,7 @@ speed_cn() {
     speed_test_cn '4713' 'Beijing   CM'
     speed_test_cn '16803' 'Shanghai  CM'
     speed_test_cn '4515' 'Shenzhen  CM'
-    speed_test_cn '16395' 'Wuhan     CM'
+    speed_test_cn '5292' "Xi'an     CM"
 }
 
 io_test() {
