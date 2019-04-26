@@ -53,7 +53,7 @@ D = {
     'Tianjin': '219.150.32.132',
     'Taiyuan': '221.204.253.1',
     'Huhehaote': '222.74.1.200',
-    'Shanghai': 'speedtest2.sh.chinamobile.com',
+    'Shanghai': '163.53.91.1',
     'Nanjing': '4gnanjing1.speedtest.jsinfo.net',
     'Hangzhou': '122.229.136.10',
     'Suzhou': '218.94.214.42',
@@ -63,7 +63,7 @@ D = {
     'Nanchang': '111.74.239.65',
     'Jinan': '202.102.152.3',
     'Zhengzhou': '61.168.23.74',
-    'Wuhan': '113.57.249.2',
+    'Wuhan': '116.211.140.2',
     'Xiangyang': '221.233.60.1',
     'Changsha': '61.234.254.5',
     'Shenzhen': '58.60.3.102',
@@ -74,7 +74,7 @@ D = {
     'Urumqi': '61.128.114.133',
     'Chengdu': 'speed.westidc.com.cn',
     'Chongqing': 'speedtest1.cqccn.com',
-    'Lhasa': '221.13.70.244'
+    'Lhasa': '221.13.70.150'
     }
 
 
