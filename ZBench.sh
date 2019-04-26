@@ -122,7 +122,7 @@ chmod a+rx /tmp/zbench/ZPing.py
 #"TraceRoute to Shanghai Unicom"
 /tmp/zbench/besttrace -q 1 -g en 210.22.80.1 > /tmp/zbench/shu.txt 2>&1 &
 #"TraceRoute to Shanghai Mobile"
-/tmp/zbench/besttrace -q 1 -g en speedtest2.sh.chinamobile.com > /tmp/zbench/shm.txt 2>&1 &
+/tmp/zbench/besttrace -q 1 -g en 120.204.198.210 > /tmp/zbench/shm.txt 2>&1 &
 #"TraceRoute to Guangdong Telecom"
 /tmp/zbench/besttrace -q 1 -g en gd.189.cn > /tmp/zbench/gdt.txt 2>&1 &
 #"TraceRoute to Guangdong Unicom"
@@ -214,7 +214,7 @@ speed_cn() {
     speed_test_cn '12637' 'Xiangyang CT'
     speed_test_cn '19076' 'Chongqing CT'
     speed_test_cn '5145' 'Beijing   CU'
-    speed_test_cn '5083' 'Shanghai  CU'
+    speed_test_cn '21005' 'Shanghai  CU'
     speed_test_cn '4884' 'Fuzhou    CU'
     speed_test_cn '5485' 'Wuhan     CU'
     speed_test_cn '4713' 'Beijing   CM'
