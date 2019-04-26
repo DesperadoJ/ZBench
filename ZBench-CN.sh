@@ -117,6 +117,12 @@ if  [ ! -e '/tmp/zbench/ZPing-CN.py' ]; then
 fi
 chmod a+rx /tmp/zbench/ZPing-CN.py
 
+#"TraceRoute to Beijing Telecom"
+/tmp/zbench/besttrace -q 1 -g cn 113.59.224.1 > /tmp/zbench/bjt.txt 2>&1 &
+#"TraceRoute to Beijing Unicom"
+/tmp/zbench/besttrace -q 1 -g cn 61.135.169.125 > /tmp/zbench/bju.txt 2>&1 &
+#"TraceRoute to Beijing Mobile"
+/tmp/zbench/besttrace -q 1 -g cn 221.183.37.237 > /tmp/zbench/bjm.txt 2>&1 &
 #"TraceRoute to Shanghai Telecom"
 /tmp/zbench/besttrace -q 1 -g cn 61.129.42.6 > /tmp/zbench/sht.txt 2>&1 &
 #"TraceRoute to Shanghai Unicom"

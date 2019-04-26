@@ -459,13 +459,16 @@ html = """
 <div class="ui hidden divider"></div>
 <div class="ui container">
 <div class="ui top attached tabular menu">
-  <a class="item active" data-tab="first">上海电信</a>
-  <a class="item" data-tab="second">上海联通</a>
-  <a class="item" data-tab="third">上海移动</a>
-  <a class="item" data-tab="fourth">广东电信</a>
-  <a class="item" data-tab="fifth">广东联通</a>
-  <a class="item" data-tab="sixth">广东移动</a>
-  <a class="item" data-tab="seventh">所在地IP</a>
+  <a class="item active" data-tab="first">北京电信</a>
+  <a class="item" data-tab="second">北京联通</a>
+  <a class="item" data-tab="third">北京移动</a>
+  <a class="item" data-tab="fourth">上海电信</a>
+  <a class="item" data-tab="fifth">上海联通</a>
+  <a class="item" data-tab="sixth">上海移动</a>
+  <a class="item" data-tab="seventh">广东电信</a>
+  <a class="item" data-tab="eighth">广东联通</a>
+  <a class="item" data-tab="ninth">广东移动</a>
+  <a class="item" data-tab="tenth">所在地IP</a>
 </div>
 """
 
@@ -573,7 +576,6 @@ $('.message .close')
 //Model
 $('.ui.basic.modal')
   .modal('show')
-  .closable('false')
 ;
 </script>
 </footer>
@@ -586,33 +588,45 @@ speed = change_to_list("/tmp/zbench/speed.txt")
 
 speed_cn = change_to_list("/tmp/zbench/speed_cn.txt")
 
+bjt = traceroute_to_dict("/tmp/zbench/bjt.txt")
+traceroute_to_table("/tmp/zbench/bjt.txt")
+bjt_html = dict_to_table(bjt,"first")
+
+bju = traceroute_to_dict("/tmp/zbench/bju.txt")
+traceroute_to_table("/tmp/zbench/bju.txt")
+bju_html = dict_to_table(bju,"second")
+
+bjm = traceroute_to_dict("/tmp/zbench/bjm.txt")
+traceroute_to_table("/tmp/zbench/bjm.txt")
+bjm_html = dict_to_table(bjm,"third")
+
 sht = traceroute_to_dict("/tmp/zbench/sht.txt")
 traceroute_to_table("/tmp/zbench/sht.txt")
-sht_html = dict_to_table(sht,"first")
+sht_html = dict_to_table(sht,"fourth")
 
 shu = traceroute_to_dict("/tmp/zbench/shu.txt")
 traceroute_to_table("/tmp/zbench/shu.txt")
-shu_html = dict_to_table(shu,"second")
+shu_html = dict_to_table(shu,"fifth")
 
 shm = traceroute_to_dict("/tmp/zbench/shm.txt")
 traceroute_to_table("/tmp/zbench/shm.txt")
-shm_html = dict_to_table(shm,"third")
+shm_html = dict_to_table(shm,"sixth")
 
 gdt = traceroute_to_dict("/tmp/zbench/gdt.txt")
 traceroute_to_table("/tmp/zbench/gdt.txt")
-gdt_html = dict_to_table(gdt,"fourth")
+gdt_html = dict_to_table(gdt,"seventh")
 
 gdu = traceroute_to_dict("/tmp/zbench/gdu.txt")
 traceroute_to_table("/tmp/zbench/gdu.txt")
-gdu_html = dict_to_table(gdu,"fifth")
+gdu_html = dict_to_table(gdu,"eighth")
 
 gdm = traceroute_to_dict("/tmp/zbench/gdm.txt")
 traceroute_to_table("/tmp/zbench/gdm.txt")
-gdm_html = dict_to_table(gdm,"sixth")
+gdm_html = dict_to_table(gdm,"ninth")
 
 own = traceroute_to_dict("/tmp/zbench/own.txt")
 traceroute_to_table("/tmp/zbench/own.txt")
-own_html = dict_to_table(own,"seventh")
+own_html = dict_to_table(own,"tenth")
 
 html = html.format(info[0],info[1],info[2],info[3],info[4],info[5],info[6],info[7],info[8],info[9],info[10],info[11],info[12],info[13],info[14], \
 
@@ -620,7 +634,7 @@ speed[0],speed[1],speed[2],speed[3],speed[4],speed[5],speed[6],speed[7],speed[8]
 
 speed_cn[0],speed_cn[1],speed_cn[2],speed_cn[3],speed_cn[4],speed_cn[5],speed_cn[6],speed_cn[7],speed_cn[8],speed_cn[9],speed_cn[10],speed_cn[11],speed_cn[12],speed_cn[13],speed_cn[14],speed_cn[15],speed_cn[16],speed_cn[17],speed_cn[18],speed_cn[19],speed_cn[20],speed_cn[21],speed_cn[22],speed_cn[23],speed_cn[24],speed_cn[25],speed_cn[26],speed_cn[27],speed_cn[28],speed_cn[29],speed_cn[30],speed_cn[31],speed_cn[32],speed_cn[33],speed_cn[34],speed_cn[35])
 
-html = html + sht_html + shu_html + shm_html + gdt_html + gdu_html + gdm_html + own_html + footer
+html = html + bjt_html + bju_html + bjm_html + sht_html + shu_html + shm_html + gdt_html + gdu_html + gdm_html + own_html + footer
 
 web = open("/root/report.html","w")
 
