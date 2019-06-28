@@ -377,7 +377,7 @@ html = """
   </thead>
   <tbody>
     <tr>
-      <td>浙江电信</td>
+      <td>杭州电信</td>
       <td>{48}</td>
       <td>{49}</td>
       <td>{50}</td>
@@ -425,7 +425,7 @@ html = """
       <td>{71}</td>
     </tr>
     <tr>
-      <td>辽宁移动</td>
+      <td>沈阳移动</td>
       <td>{72}</td>
       <td>{73}</td>
       <td>{74}</td>
