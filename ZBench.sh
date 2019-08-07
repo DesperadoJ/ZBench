@@ -298,11 +298,11 @@ fi
 next
 
 io1=$( io_test )
-echo -e "I/O speed (1st run)  : ${YELLOW}$io1${PLAIN}"
+echo -e "I/O speed (1st run)    : ${YELLOW}$io1${PLAIN}"
 io2=$( io_test )
-echo -e "I/O speed (2nd run)  : ${YELLOW}$io2${PLAIN}"
+echo -e "I/O speed (2nd run)    : ${YELLOW}$io2${PLAIN}"
 io3=$( io_test )
-echo -e "I/O speed (3rd run)  : ${YELLOW}$io3${PLAIN}"
+echo -e "I/O speed (3rd run)    : ${YELLOW}$io3${PLAIN}"
 next
 
 ##Record All Test data

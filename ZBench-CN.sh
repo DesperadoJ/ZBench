@@ -298,11 +298,11 @@ fi
 next
 
 io1=$( io_test )
-echo -e "硬盘I/O (第一次测试) : ${YELLOW}$io1${PLAIN}"
+echo -e "硬盘I/O (第一次测试)   : ${YELLOW}$io1${PLAIN}"
 io2=$( io_test )
-echo -e "硬盘I/O (第二次测试) : ${YELLOW}$io2${PLAIN}"
+echo -e "硬盘I/O (第二次测试)   : ${YELLOW}$io2${PLAIN}"
 io3=$( io_test )
-echo -e "硬盘I/O (第三次测试) : ${YELLOW}$io3${PLAIN}"
+echo -e "硬盘I/O (第三次测试)   : ${YELLOW}$io3${PLAIN}"
 next
 
 ##Record All Test data
