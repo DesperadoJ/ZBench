@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+#
+# URL:https://github.com/DesperadoJ/ZBench
+
 # Check if user is root
 [ $(id -u) != "0" ] && { echo "${CFAILURE}Error: You must be root to run this script${CEND}"; exit 1; }
 
@@ -164,7 +168,7 @@ speed_test() {
 speed() {
     touch /tmp/zbench/speed.txt
     speed_test 'http://cachefly.cachefly.net/100mb.test' 'CacheFly'
-    speed_test 'http://speedtest.tokyo.linode.com/100MB-tokyo.bin' 'Linode, Tokyo, JP'
+    speed_test 'http://speedtest.tokyo2.linode.com/100MB-tokyo2.bin' 'Linode, Tokyo, JP'
     speed_test 'http://speedtest.singapore.linode.com/100MB-singapore.bin' 'Linode, Singapore, SG'
     speed_test 'http://speedtest.fremont.linode.com/100MB-fremont.bin' 'Linode, Fremont, CA'
     speed_test 'http://speedtest.london.linode.com/100MB-london.bin' 'Linode, London, UK'
@@ -262,26 +266,28 @@ opsy=$( get_opsy )
 arch=$( uname -m )
 lbit=$( getconf LONG_BIT )
 kern=$( uname -r )
-ipv6=$( wget -qO- -t1 -T2 ipv6.icanhazip.com )
+#ipv6=$( wget -qO- -t1 -T2 ipv6.icanhazip.com )
 disk_size1=($( LANG=C df -hPl | grep -wvE '\-|none|tmpfs|devtmpfs|by-uuid|chroot|Filesystem' | awk '{print $2}' ))
 disk_size2=($( LANG=C df -hPl | grep -wvE '\-|none|tmpfs|devtmpfs|by-uuid|chroot|Filesystem' | awk '{print $3}' ))
 disk_total_size=$( calc_disk ${disk_size1[@]} )
 disk_used_size=$( calc_disk ${disk_size2[@]} )
+tcpctrl=$( sysctl net.ipv4.tcp_congestion_control | awk -F ' ' '{print $3}' )
 clear
 next
 
-echo -e "CPU 型号             : ${SKYBLUE}$cname${PLAIN}"
-echo -e "CPU 核心数           : ${SKYBLUE}$cores${PLAIN}"
-echo -e "CPU 频率             : ${SKYBLUE}$freq MHz${PLAIN}"
-echo -e "总硬盘大小           : ${SKYBLUE}$disk_total_size GB ($disk_used_size GB 已使用)${PLAIN}"
-echo -e "总内存大小           : ${SKYBLUE}$tram MB ($uram MB 已使用)${PLAIN}"
-echo -e "SWAP大小             : ${SKYBLUE}$swap MB ($uswap MB 已使用)${PLAIN}"
-echo -e "开机时长             : ${SKYBLUE}$up${PLAIN}"
-echo -e "系统负载             : ${SKYBLUE}$load${PLAIN}"
-echo -e "系统                 : ${SKYBLUE}$opsy${PLAIN}"
-echo -e "架构                 : ${SKYBLUE}$arch ($lbit 位)${PLAIN}"
-echo -e "内核                 : ${SKYBLUE}$kern${PLAIN}"
-echo -ne "虚拟化平台           : "
+echo -e "CPU 型号               : ${SKYBLUE}$cname${PLAIN}"
+echo -e "CPU 核心数             : ${SKYBLUE}$cores${PLAIN}"
+echo -e "CPU 频率               : ${SKYBLUE}$freq MHz${PLAIN}"
+echo -e "总硬盘大小             : ${SKYBLUE}$disk_total_size GB ($disk_used_size GB 已使用)${PLAIN}"
+echo -e "总内存大小             : ${SKYBLUE}$tram MB ($uram MB 已使用)${PLAIN}"
+echo -e "SWAP大小               : ${SKYBLUE}$swap MB ($uswap MB 已使用)${PLAIN}"
+echo -e "开机时长               : ${SKYBLUE}$up${PLAIN}"
+echo -e "系统负载               : ${SKYBLUE}$load${PLAIN}"
+echo -e "系统                   : ${SKYBLUE}$opsy${PLAIN}"
+echo -e "架构                   : ${SKYBLUE}$arch ($lbit 位)${PLAIN}"
+echo -e "内核                   : ${SKYBLUE}$kern${PLAIN}"
+echo -e "TCP拥塞控制            : ${SKYBLUE}$tcpctrl${PLAIN}"
+echo -ne "虚拟化平台             : "
 virtua=$(virt-what) 2>/dev/null
 if [[ ${virtua} ]]; then
     echo -e "${SKYBLUE}$virtua${PLAIN}"
@@ -312,6 +318,7 @@ echo $load >> /tmp/zbench/info.txt
 echo $opsy >> /tmp/zbench/info.txt
 echo "$arch ($lbit 位) ">> /tmp/zbench/info.txt
 echo $kern >> /tmp/zbench/info.txt
+echo $tcpctrl >> /tmp/zbench/info.txt
 echo $virtua >> /tmp/zbench/info.txt
 echo $io1 >> /tmp/zbench/info.txt
 echo $io2 >> /tmp/zbench/info.txt

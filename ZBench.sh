@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+#
+# URL:https://github.com/DesperadoJ/ZBench
+
 # Check if user is root
 [ $(id -u) != "0" ] && { echo "${CFAILURE}Error: You must be root to run this script${CEND}"; exit 1; }
 
@@ -164,7 +168,7 @@ speed_test() {
 speed() {
     touch /tmp/zbench/speed.txt
     speed_test 'http://cachefly.cachefly.net/100mb.test' 'CacheFly'
-    speed_test 'http://speedtest.tokyo.linode.com/100MB-tokyo.bin' 'Linode, Tokyo, JP'
+    speed_test 'http://speedtest.tokyo2.linode.com/100MB-tokyo2.bin' 'Linode, Tokyo, JP'
     speed_test 'http://speedtest.singapore.linode.com/100MB-singapore.bin' 'Linode, Singapore, SG'
     speed_test 'http://speedtest.fremont.linode.com/100MB-fremont.bin' 'Linode, Fremont, CA'
     speed_test 'http://speedtest.london.linode.com/100MB-london.bin' 'Linode, London, UK'
@@ -262,26 +266,28 @@ opsy=$( get_opsy )
 arch=$( uname -m )
 lbit=$( getconf LONG_BIT )
 kern=$( uname -r )
-ipv6=$( wget -qO- -t1 -T2 ipv6.icanhazip.com )
+#ipv6=$( wget -qO- -t1 -T2 ipv6.icanhazip.com )
 disk_size1=($( LANG=C df -hPl | grep -wvE '\-|none|tmpfs|devtmpfs|by-uuid|chroot|Filesystem' | awk '{print $2}' ))
 disk_size2=($( LANG=C df -hPl | grep -wvE '\-|none|tmpfs|devtmpfs|by-uuid|chroot|Filesystem' | awk '{print $3}' ))
 disk_total_size=$( calc_disk ${disk_size1[@]} )
 disk_used_size=$( calc_disk ${disk_size2[@]} )
+tcpctrl=$( sysctl net.ipv4.tcp_congestion_control | awk -F ' ' '{print $3}' )
 clear
 next
 
-echo -e "CPU model            : ${SKYBLUE}$cname${PLAIN}"
-echo -e "Number of cores      : ${SKYBLUE}$cores${PLAIN}"
-echo -e "CPU frequency        : ${SKYBLUE}$freq MHz${PLAIN}"
-echo -e "Total size of Disk   : ${SKYBLUE}$disk_total_size GB ($disk_used_size GB Used)${PLAIN}"
-echo -e "Total amount of Mem  : ${SKYBLUE}$tram MB ($uram MB Used)${PLAIN}"
-echo -e "Total amount of Swap : ${SKYBLUE}$swap MB ($uswap MB Used)${PLAIN}"
-echo -e "System uptime        : ${SKYBLUE}$up${PLAIN}"
-echo -e "Load average         : ${SKYBLUE}$load${PLAIN}"
-echo -e "OS                   : ${SKYBLUE}$opsy${PLAIN}"
-echo -e "Arch                 : ${SKYBLUE}$arch ($lbit Bit)${PLAIN}"
-echo -e "Kernel               : ${SKYBLUE}$kern${PLAIN}"
-echo -ne "Virt                 : "
+echo -e "CPU model              : ${SKYBLUE}$cname${PLAIN}"
+echo -e "Number of cores        : ${SKYBLUE}$cores${PLAIN}"
+echo -e "CPU frequency          : ${SKYBLUE}$freq MHz${PLAIN}"
+echo -e "Total size of Disk     : ${SKYBLUE}$disk_total_size GB ($disk_used_size GB Used)${PLAIN}"
+echo -e "Total amount of Mem    : ${SKYBLUE}$tram MB ($uram MB Used)${PLAIN}"
+echo -e "Total amount of Swap   : ${SKYBLUE}$swap MB ($uswap MB Used)${PLAIN}"
+echo -e "System uptime          : ${SKYBLUE}$up${PLAIN}"
+echo -e "Load average           : ${SKYBLUE}$load${PLAIN}"
+echo -e "OS                     : ${SKYBLUE}$opsy${PLAIN}"
+echo -e "Arch                   : ${SKYBLUE}$arch ($lbit Bit)${PLAIN}"
+echo -e "Kernel                 : ${SKYBLUE}$kern${PLAIN}"
+echo -e "TCP congestion control : ${SKYBLUE}$tcpctrl${PLAIN}"
+echo -ne "Virt                   : "
 virtua=$(virt-what) 2>/dev/null
 if [[ ${virtua} ]]; then
     echo -e "${SKYBLUE}$virtua${PLAIN}"
@@ -312,6 +318,7 @@ echo $load >> /tmp/zbench/info.txt
 echo $opsy >> /tmp/zbench/info.txt
 echo "$arch ($lbit 位) ">> /tmp/zbench/info.txt
 echo $kern >> /tmp/zbench/info.txt
+echo $tcpctrl >> /tmp/zbench/info.txt
 echo $virtua >> /tmp/zbench/info.txt
 echo $io1 >> /tmp/zbench/info.txt
 echo $io2 >> /tmp/zbench/info.txt

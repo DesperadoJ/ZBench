@@ -104,11 +104,11 @@ html = """
 <html>
 <head>
     <meta charset="UTF-8" id="home">
-    <meta name="keywords" content="Zbench,DesperadoJ,Bench Mark,VPS,测评,测试脚本">
+    <meta name="keywords" content="Zbench,DesperadoJ,Benchmark,VPS,测评,测试脚本">
     <title>Zbench v1.0 HTML Output</title>
-<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.css">
-<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/semantic-ui/2.4.1/semantic.min.css">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/semantic-ui/2.4.1/semantic.min.js"></script>
 </head>
 <body>
 <div class="ui attached stackable menu">
@@ -155,7 +155,7 @@ html = """
 </div>
 <div class="ui hidden divider" id="system"></div>
 <h2 class="ui center aligned icon header">
-  <i class="circular Laptop icon"></i>
+  <i class="circular laptop icon"></i>
   系统信息
 </h2>
 <div class="ui hidden divider"></div>
@@ -169,82 +169,88 @@ html = """
   <tbody>
     <tr>
       <td class="collapsing">
-        <i class="Microchip icon"></i> CPU 型号
+        <i class="microchip icon"></i> CPU 型号
       </td>
       <td>{0}</td>
     </tr>
     <tr>
       <td>
-        <i class="Microchip icon"></i> CPU 核心数
+        <i class="microchip icon"></i> CPU 核心数
       </td>
       <td>{1}</td>
     </tr>
     <tr>
       <td>
-        <i class="Microchip icon"></i> CPU 主频
+        <i class="microchip icon"></i> CPU 主频
       </td>
       <td>{2}</td>
     </tr>
     <tr>
       <td>
-        <i class="Archive icon"></i> 硬盘大小
+        <i class="hdd icon"></i> 硬盘大小
       </td>
       <td>{3}</td>
     </tr>
     <tr>
       <td>
-        <i class="Lightning icon"></i> 内存大小
+        <i class="lightning icon"></i> 内存大小
       </td>
       <td>{4}</td>
     </tr>
     <tr>
       <td>
-        <i class="Database icon"></i> SWAP 交换空间大小
+        <i class="database icon"></i> SWAP 交换空间大小
       </td>
       <td>{5}</td>
     </tr>
     <tr>
       <td>
-        <i class="Bar Chart icon"></i> 在线时长
+        <i class="bar chart icon"></i> 在线时长
       </td>
       <td>{6}</td>
     </tr>
     <tr>
       <td>
-        <i class="Pie Chart icon"></i> 系统负载
+        <i class="pie chart icon"></i> 系统负载
       </td>
       <td>{7}</td>
     </tr>
     <tr>
       <td>
-        <i class="Windows icon"></i> 系统
+        <i class="linux icon"></i> 系统
       </td>
       <td>{8}</td>
     </tr>
     <tr>
       <td>
-        <i class="Columns icon"></i> 架构
+        <i class="columns icon"></i> 架构
       </td>
       <td>{9}</td>
     </tr>
     <tr>
       <td>
-        <i class="File Code Outline icon"></i> 内核
+        <i class="file code outline icon"></i> 内核
       </td>
       <td>{10}</td>
     </tr>
     <tr>
       <td>
-        <i class="Group Object icon"></i> 虚拟化技术
+        <i class="globe icon"></i> TCP 拥塞控制算法
       </td>
       <td>{11}</td>
+    </tr>
+    <tr>
+      <td>
+        <i class="group object icon"></i> 虚拟化技术
+      </td>
+      <td>{12}</td>
     </tr>
   </tbody>
 </table>
 </div>
 <div class="ui hidden divider" id="hdd"></div>
 <h2 class="ui center aligned icon header">
-  <i class="circular Clone icon"></i>
+  <i class="circular copy outline icon"></i>
   硬盘 I/O
 </h2>
 <div class="ui hidden divider"></div>
@@ -261,26 +267,26 @@ html = """
       <td class="collapsing">
         <i class="folder icon"></i> 第一次测试
       </td>
-      <td>{12}</td>
+      <td>{13}</td>
     </tr>
     <tr>
       <td>
         <i class="folder icon"></i> 第二次测试
       </td>
-      <td>{13}</td>
+      <td>{14}</td>
     </tr>
     <tr>
       <td>
         <i class="folder icon"></i> 第三次测试
       </td>
-      <td>{14}</td>
+      <td>{15}</td>
     </tr>
   </tbody>
 </table>
 </div>
 <div class="ui hidden divider" id="net"></div>
 <h2 class="ui center aligned icon header">
-  <i class="circular Internet Explorer icon"></i>
+  <i class="circular download icon"></i>
   网络测试
 </h2>
 <div class="ui hidden divider"></div>
@@ -297,69 +303,69 @@ html = """
   <tbody>
     <tr>
       <td>CacheFly</td>
-      <td>{15}</td>
       <td>{16}</td>
       <td>{17}</td>
+      <td>{18}</td>
     </tr>
     <tr>
       <td>Linode 日本 东京</td>
-      <td>{18}</td>
       <td>{19}</td>
       <td>{20}</td>
+      <td>{21}</td>
     </tr>
     <tr>
       <td>Linode 新加坡</td>
-      <td>{21}</td>
       <td>{22}</td>
       <td>{23}</td>
+      <td>{24}</td>
     </tr>
     <tr>
       <td>Linode 美国 费利蒙</td>
-      <td>{24}</td>
       <td>{25}</td>
       <td>{26}</td>
+      <td>{27}</td>
     </tr>
     <tr>
       <td>Linode 英国 伦敦</td>
-      <td>{27}</td>
       <td>{28}</td>
       <td>{29}</td>
+      <td>{30}</td>
     </tr>
     <tr>
       <td>Linode 德国 法兰克福</td>
-      <td>{30}</td>
       <td>{31}</td>
       <td>{32}</td>
+      <td>{33}</td>
     </tr>
     <tr>
       <td>Softlayer 中国 香港</td>
-      <td>{33}</td>
       <td>{34}</td>
       <td>{35}</td>
+      <td>{36}</td>
     </tr>
     <tr>
       <td>Softlayer 新加坡</td>
-      <td>{36}</td>
       <td>{37}</td>
       <td>{38}</td>
+      <td>{39}</td>
     </tr>
     <tr>
       <td>Softlayer 美国 达拉斯</td>
-      <td>{39}</td>
       <td>{40}</td>
       <td>{41}</td>
+      <td>{42}</td>
     </tr>
     <tr>
       <td>Softlayer 美国 西雅图</td>
-      <td>{42}</td>
       <td>{43}</td>
       <td>{44}</td>
+      <td>{45}</td>
     </tr>
     <tr>
       <td>Softlayer 德国 法兰克福</td>
-      <td>{45}</td>
       <td>{46}</td>
       <td>{47}</td>
+      <td>{48}</td>
     </tr>
   </tbody>
 </table>
@@ -378,82 +384,82 @@ html = """
   <tbody>
     <tr>
       <td>广州电信</td>
-      <td>{48}</td>
       <td>{49}</td>
       <td>{50}</td>
+      <td>{51}</td>
     </tr>
     <tr>
       <td>上海电信</td>
-      <td>{51}</td>
       <td>{52}</td>
       <td>{53}</td>
+      <td>{54}</td>
     </tr>
     <tr>
       <td>武汉电信</td>
-      <td>{54}</td>
       <td>{55}</td>
       <td>{56}</td>
+      <td>{57}</td>
     </tr>
     <tr>
       <td>兰州电信</td>
-      <td>{57}</td>
       <td>{58}</td>
       <td>{59}</td>
+      <td>{60}</td>
     </tr>
     <tr>
       <td>福州联通</td>
-      <td>{60}</td>
       <td>{61}</td>
       <td>{62}</td>
+      <td>{63}</td>
     </tr>
     <tr>
       <td>上海联通</td>
-      <td>{63}</td>
       <td>{64}</td>
       <td>{65}</td>
+      <td>{66}</td>
     </tr>
     <tr>
       <td>武汉联通</td>
-      <td>{66}</td>
       <td>{67}</td>
       <td>{68}</td>
+      <td>{69}</td>
     </tr>
     <tr>
       <td>天津联通</td>
-      <td>{69}</td>
       <td>{70}</td>
       <td>{71}</td>
+      <td>{72}</td>
     </tr>
     <tr>
       <td>深圳移动</td>
-      <td>{72}</td>
       <td>{73}</td>
       <td>{74}</td>
+      <td>{75}</td>
     </tr>
     <tr>
       <td>上海移动</td>
-      <td>{75}</td>
       <td>{76}</td>
       <td>{77}</td>
+      <td>{78}</td>
     </tr>
     <tr>
       <td>武汉移动</td>
-      <td>{78}</td>
       <td>{79}</td>
       <td>{80}</td>
+      <td>{81}</td>
     </tr>
     <tr>
       <td>天津移动</td>
-      <td>{81}</td>
       <td>{82}</td>
       <td>{83}</td>
+      <td>{84}</td>
     </tr>
   </tbody>
 </table>
 </div>
 <div class="ui hidden divider" id="route"></div>
 <h2 class="ui center aligned icon header">
-  <i class="circular Blind icon"></i>
+  <i class="circular map outline icon"></i>
   路由追踪
 </h2>
 <div class="ui hidden divider"></div>
@@ -628,7 +634,7 @@ own = traceroute_to_dict("/tmp/zbench/own.txt")
 traceroute_to_table("/tmp/zbench/own.txt")
 own_html = dict_to_table(own,"tenth")
 
-html = html.format(info[0],info[1],info[2],info[3],info[4],info[5],info[6],info[7],info[8],info[9],info[10],info[11],info[12],info[13],info[14], \
+html = html.format(info[0],info[1],info[2],info[3],info[4],info[5],info[6],info[7],info[8],info[9],info[10],info[11],info[12],info[13],info[14],info[15], \
 
 speed[0],speed[1],speed[2],speed[3],speed[4],speed[5],speed[6],speed[7],speed[8],speed[9],speed[10],speed[11],speed[12],speed[13],speed[14],speed[15],speed[16],speed[17],speed[18],speed[19],speed[20],speed[21],speed[22],speed[23],speed[24],speed[25],speed[26],speed[27],speed[28],speed[29],speed[30],speed[31],speed[32],\
 
