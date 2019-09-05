@@ -229,7 +229,7 @@ speed_cn() {
     speed_test_cn '5475' 'Tianjin   CU'
     speed_test_cn '4515' 'Shenzhen  CM'
     speed_test_cn '25637' 'Shanghai  CM'
-    speed_test_cn '26357' 'Wuhan     CM'
+    speed_test_cn '26547' 'Wuhan     CM'
     speed_test_cn '17184' 'Tianjin   CM'
 }
 

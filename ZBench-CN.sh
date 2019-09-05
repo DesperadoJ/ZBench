@@ -229,7 +229,7 @@ speed_cn() {
     speed_test_cn '5475' '天津联通'
     speed_test_cn '4515' '深圳移动'
     speed_test_cn '25637' '上海移动'
-    speed_test_cn '26357' '武汉移动'
+    speed_test_cn '26547' '武汉移动'
     speed_test_cn '17184' '天津移动'
 }
 
