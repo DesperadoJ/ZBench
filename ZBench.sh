@@ -219,18 +219,18 @@ speed_test_cn(){
 
 speed_cn() {
     touch /tmp/zbench/speed_cn.txt
-    speed_test_cn '17251' 'Guangzhou CT'
-    speed_test_cn '3633' 'Shanghai  CT'
-    speed_test_cn '23844' 'Wuhan     CT'
-    speed_test_cn '3973' 'Lanzhou   CT'
-    speed_test_cn '4884' 'Fuzhou    CU'
+    speed_test_cn '27594' 'Guangzhou CT'
+    speed_test_cn '26352' 'Nanjing   CT'
+    speed_test_cn '24011' 'Wuhan     CT'
+    speed_test_cn '27377' 'Beijing   CT'
+    speed_test_cn '26678' 'Guangzhou CU'
     speed_test_cn '24447' 'Shanghai  CU'
     speed_test_cn '5485' 'Wuhan     CU'
-    speed_test_cn '5475' 'Tianjin   CU'
-    speed_test_cn '4515' 'Shenzhen  CM'
+    speed_test_cn '5145' 'Beijing   CU'
+    speed_test_cn '16171' 'Fuzhou    CM'
     speed_test_cn '25637' 'Shanghai  CM'
     speed_test_cn '26547' 'Wuhan     CM'
-    speed_test_cn '17184' 'Tianjin   CM'
+    speed_test_cn '25858' 'Beijing   CM'
 }
 
 io_test() {

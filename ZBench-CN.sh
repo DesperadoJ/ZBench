@@ -219,18 +219,18 @@ speed_test_cn(){
 
 speed_cn() {
     touch /tmp/zbench/speed_cn.txt
-    speed_test_cn '17251' '广州电信'
-    speed_test_cn '3633' '上海电信'
-    speed_test_cn '23844' '武汉电信'
-    speed_test_cn '3973' '兰州电信'
-    speed_test_cn '4884' '福州联通'
+    speed_test_cn '27594' '广州电信'
+    speed_test_cn '26352' '南京电信'
+    speed_test_cn '24011' '武汉电信'
+    speed_test_cn '27377' '北京电信'
+    speed_test_cn '26678' '广州联通'
     speed_test_cn '24447' '上海联通'
     speed_test_cn '5485' '武汉联通'
-    speed_test_cn '5475' '天津联通'
-    speed_test_cn '4515' '深圳移动'
+    speed_test_cn '5145' '北京联通'
+    speed_test_cn '16171' '福州移动'
     speed_test_cn '25637' '上海移动'
     speed_test_cn '26547' '武汉移动'
-    speed_test_cn '17184' '天津移动'
+    speed_test_cn '25858' '北京移动'
 }
 
 io_test() {
